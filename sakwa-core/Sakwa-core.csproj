@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E21BD5DD-E4A2-4B4C-A153-7BD9A0E8ACE7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>sakwa</RootNamespace>
+    <AssemblyName>Sakwa-core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\common\third-party\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\common\third-party\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="controls\SakwaUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controls\ucDataConnectionEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controls\ucDataConnectionEditor.Designer.cs">
+      <DependentUpon>ucDataConnectionEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="domain\datamodule\IDataDefinition.cs" />
+    <Compile Include="domain\datamodule\IDataDefinitionEditor.cs" />
+    <Compile Include="domain\datamodule\IDataSource.cs" />
+    <Compile Include="domain\datamodule\IDataSourceManager.cs" />
+    <Compile Include="domain\datamodule\IProperty.cs" />
+    <Compile Include="domain\nodes\IExpression.cs" />
+    <Compile Include="domain\nodes\IAssignMethod.cs" />
+    <Compile Include="domain\nodes\IBaseNode.cs" />
+    <Compile Include="domain\nodes\IBranch.cs" />
+    <Compile Include="domain\datamodule\IDataSourceFactory.cs" />
+    <Compile Include="domain\nodes\IDataObject.cs" />
+    <Compile Include="domain\nodes\IDecisionTree.cs" />
+    <Compile Include="domain\nodes\INodeEquality.cs" />
+    <Compile Include="domain\nodes\IRootNode.cs" />
+    <Compile Include="domain\nodes\IDomainObject.cs" />
+    <Compile Include="domain\nodes\IVariable.cs" />
+    <Compile Include="domain\nodes\IVariableDef.cs" />
+    <Compile Include="domain\persistence\IDataPersistence.cs" />
+    <Compile Include="domain\persistence\IPersistence.cs" />
+    <Compile Include="implementation\datamodule\IDataDefinitionImpl.cs" />
+    <Compile Include="implementation\datamodule\IDataSourceImpl.cs" />
+    <Compile Include="implementation\nodes\IDataObjectImpl.cs" />
+    <Compile Include="implementation\datamodule\IDataSourceManagerImpl.cs" />
+    <Compile Include="implementation\datamodule\IPropertyBoolImpl.cs" />
+    <Compile Include="implementation\nodes\IExpressionImpl.cs" />
+    <Compile Include="implementation\nodes\IBaseNodeImpl.cs" />
+    <Compile Include="implementation\nodes\IBranchImpl.cs" />
+    <Compile Include="implementation\nodes\IDecisionTreeImpl.cs" />
+    <Compile Include="implementation\nodes\INodeEqualityImpl.cs" />
+    <Compile Include="implementation\nodes\IRootNodeImpl.cs" />
+    <Compile Include="implementation\nodes\IDomainObjectImpl.cs" />
+    <Compile Include="implementation\nodes\IVariableDefImpl.cs" />
+    <Compile Include="implementation\nodes\IVariableImpl.cs" />
+    <Compile Include="implementation\persistence\IDataPersistenceImpl.cs" />
+    <Compile Include="implementation\datamodule\IPropertyImpl.cs" />
+    <Compile Include="implementation\datamodule\IPropertyIntImpl.cs" />
+    <Compile Include="implementation\datamodule\IPropertyStringImpl.cs" />
+    <Compile Include="implementation\datamodule\IPropertyUriFileOrPathImpl.cs" />
+    <Compile Include="implementation\persistence\XmlPersistenceImpl.cs" />
+    <Compile Include="implementation\support\DomainTemplateMerger.cs" />
+    <Compile Include="implementation\variables\BoolVariableImpl.cs" />
+    <Compile Include="implementation\variables\CharVariableImpl.cs" />
+    <Compile Include="implementation\variables\DateVariableImpl.cs" />
+    <Compile Include="implementation\variables\EnumVariableImpl.cs" />
+    <Compile Include="implementation\variables\NumericVariableImpl.cs" />
+    <Compile Include="implementation\support\coreSupport.cs" />
+    <Compile Include="implementation\support\Constants.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="controls\ucDataConnectionEditor.resx">
+      <DependentUpon>ucDataConnectionEditor.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\common\configuration\Configuration.csproj">
+      <Project>{9578c093-a455-4761-b5f7-e43a9ab878b7}</Project>
+      <Name>Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\common\gui-components\GUI-Components.csproj">
+      <Project>{BB1C281C-EAD1-4E05-8123-0FF05C26D7F5}</Project>
+      <Name>GUI-Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\common\key-management\Kms.csproj">
+      <Project>{8913ffe2-4010-4000-8eb9-cb4ac2bedba3}</Project>
+      <Name>Kms</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

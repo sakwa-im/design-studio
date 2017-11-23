@@ -1,0 +1,409 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9DD753DE-F691-4C82-BF08-ED6ED5A37B7C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>sakwa</RootNamespace>
+    <AssemblyName>sakwa</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>sakwa.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="crypto">
+      <HintPath>..\common\third-party\crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\common\third-party\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\common\third-party\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="controls\SakwaTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="controls\ucDataObjectEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controls\ucDataObjectEditor.Designer.cs">
+      <DependentUpon>ucDataObjectEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\BulkImportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\BulkImportForm.Designer.cs">
+      <DependentUpon>BulkImportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\BulkExpressionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\BulkExpressionForm.Designer.cs">
+      <DependentUpon>BulkExpressionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\dialogs\ucNewModel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\dialogs\ucNewModel.Designer.cs">
+      <DependentUpon>ucNewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\ExpressionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\ExpressionForm.Designer.cs">
+      <DependentUpon>ExpressionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\LinkDataDefinitionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\LinkDataDefinitionsForm.Designer.cs">
+      <DependentUpon>LinkDataDefinitionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\NodeLinkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\NodeLinkForm.Designer.cs">
+      <DependentUpon>NodeLinkForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\dialogs\ucSubModelNotFound.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\dialogs\ucSubModelNotFound.Designer.cs">
+      <DependentUpon>ucSubModelNotFound.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\ConnectionPropertiesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\ConnectionPropertiesForm.Designer.cs">
+      <DependentUpon>ConnectionPropertiesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\DataConnectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\DataConnectionForm.Designer.cs">
+      <DependentUpon>DataConnectionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\dialogs\ucIllegalModel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\dialogs\ucIllegalModel.Designer.cs">
+      <DependentUpon>ucIllegalModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\dialogs\ucPropertyEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\dialogs\ucPropertyEditor.Designer.cs">
+      <DependentUpon>ucPropertyEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\MethodsFromModelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\MethodsFromModelForm.Designer.cs">
+      <DependentUpon>MethodsFromModelForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\TemplateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\TemplateForm.Designer.cs">
+      <DependentUpon>TemplateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="implementation\nodes\UI_Expression.cs" />
+    <Compile Include="implementation\nodes\UI_DataDefinition.cs" />
+    <Compile Include="implementation\nodes\UI_DataSource.cs" />
+    <Compile Include="implementation\nodes\UI_DataObject.cs" />
+    <Compile Include="implementation\nodes\UI_BaseNode.cs" />
+    <Compile Include="implementation\nodes\UI_Branch.cs" />
+    <Compile Include="implementation\nodes\UI_RootNode.cs" />
+    <Compile Include="implementation\nodes\UI_DomainObject.cs" />
+    <Compile Include="domain\businesslogic\Businesslogic.cs" />
+    <Compile Include="domain\IApplication.cs" />
+    <Compile Include="domain\model-graphics\IModelTools.cs" />
+    <Compile Include="domain\model-graphics\IGraphBase.cs" />
+    <Compile Include="domain\model-graphics\IModelGraphics.cs" />
+    <Compile Include="forms\ConfigurationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\ConfigurationForm.Designer.cs">
+      <DependentUpon>ConfigurationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\EnumFromModelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\EnumFromModelForm.Designer.cs">
+      <DependentUpon>EnumFromModelForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="implementation\assign-methods\IAssignMethodImpl.cs" />
+    <Compile Include="implementation\support\UI_Constants.cs" />
+    <Compile Include="implementation\variables\UI_BoolVariable.cs" />
+    <Compile Include="implementation\variables\UI_CharVariable.cs" />
+    <Compile Include="implementation\variables\UI_DateVariable.cs" />
+    <Compile Include="implementation\variables\UI_EnumVariable.cs" />
+    <Compile Include="implementation\variables\UI_NumericVariable.cs" />
+    <Compile Include="model-graphics\ModelGraphics.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="controls\ucDecisionTree.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controls\ucDecisionTree.Designer.cs">
+      <DependentUpon>ucDecisionTree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="controls\ucProperties.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controls\ucProperties.Designer.cs">
+      <DependentUpon>ucProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\BulkBranchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\BulkBranchForm.Designer.cs">
+      <DependentUpon>BulkBranchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="controls\ucDecisionModel.cs" />
+    <Compile Include="controls\ucDecisionModel.Designer.cs">
+      <DependentUpon>ucDecisionModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="implementation\support\ProPictureBox.cs" />
+    <Compile Include="implementation\support\Support.cs" />
+    <Compile Include="forms\dialogs\ucConfirmDropModel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\dialogs\ucConfirmDropModel.Designer.cs">
+      <DependentUpon>ucConfirmDropModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\dialogs\ucUnsavedExit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\dialogs\ucUnsavedExit.Designer.cs">
+      <DependentUpon>ucUnsavedExit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\dialogs\ucError.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\dialogs\ucError.Designer.cs">
+      <DependentUpon>ucError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestForm.Designer.cs">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="controls\ucDataObjectEditor.resx">
+      <DependentUpon>ucDataObjectEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\BulkImportForm.resx">
+      <DependentUpon>BulkImportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\BulkExpressionForm.resx">
+      <DependentUpon>BulkExpressionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\ConfigurationForm.resx">
+      <DependentUpon>ConfigurationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\dialogs\ucNewModel.resx">
+      <DependentUpon>ucNewModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\ExpressionForm.resx">
+      <DependentUpon>ExpressionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\LinkDataDefinitionsForm.resx">
+      <DependentUpon>LinkDataDefinitionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\NodeLinkForm.resx">
+      <DependentUpon>NodeLinkForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\dialogs\ucSubModelNotFound.resx">
+      <DependentUpon>ucSubModelNotFound.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\ConnectionPropertiesForm.resx">
+      <DependentUpon>ConnectionPropertiesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\DataConnectionForm.resx">
+      <DependentUpon>DataConnectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\dialogs\ucIllegalModel.resx">
+      <DependentUpon>ucIllegalModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\dialogs\ucConfirmDropModel.resx">
+      <DependentUpon>ucConfirmDropModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\dialogs\ucPropertyEditor.resx">
+      <DependentUpon>ucPropertyEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\dialogs\ucUnsavedExit.resx">
+      <DependentUpon>ucUnsavedExit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\MethodsFromModelForm.resx">
+      <DependentUpon>MethodsFromModelForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\EnumFromModelForm.resx">
+      <DependentUpon>EnumFromModelForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\TemplateForm.resx">
+      <DependentUpon>TemplateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="controls\ucDecisionTree.resx">
+      <DependentUpon>ucDecisionTree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="controls\ucProperties.resx">
+      <DependentUpon>ucProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\BulkBranchForm.resx">
+      <DependentUpon>BulkBranchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="controls\ucDecisionModel.resx">
+      <DependentUpon>ucDecisionModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\dialogs\ucError.resx">
+      <DependentUpon>ucError.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestForm.resx">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="sakwa.ico" />
+    <Content Include="telfort.ico" />
+    <EmbeddedResource Include="resources\zoom_active.png" />
+    <Content Include="help\assignments.htm" />
+    <Content Include="help\branches.htm" />
+    <Content Include="help\change-log.htm" />
+    <Content Include="help\config.htm" />
+    <Content Include="help\graphic-model.htm" />
+    <Content Include="help\images\beslismodel.png" />
+    <Content Include="help\images\bulk-assignments.png" />
+    <Content Include="help\images\bulk-branches.png" />
+    <Content Include="help\images\config-general-form.png" />
+    <Content Include="help\images\confirm-remove.png" />
+    <Content Include="help\images\graphic-sub-menu.png" />
+    <Content Include="help\images\graphic-zoom.png" />
+    <Content Include="help\images\model-menu.png" />
+    <Content Include="help\images\Sakwa-main-form.png" />
+    <Content Include="help\index.htm" />
+    <Content Include="help\model-editor.htm" />
+    <Content Include="help\model-elementen.htm" />
+    <Content Include="help\properties.htm" />
+    <Content Include="help\Sakwa.htm" />
+    <Content Include="help\variabelen.htm" />
+    <Content Include="resources\zoom_original.png" />
+    <EmbeddedResource Include="resources\zoom.png" />
+    <EmbeddedResource Include="resources\zoomin.cur" />
+    <EmbeddedResource Include="resources\zoomout.cur" />
+    <EmbeddedResource Include="resources\assignment-big.png" />
+    <Content Include="resources\background-white.png" />
+    <Content Include="resources\empty.png" />
+    <Content Include="resources\enlarge_font_blue.png" />
+    <Content Include="resources\new.png" />
+    <Content Include="resources\open_blue.png" />
+    <Content Include="resources\reduce_font_blue.png" />
+    <Content Include="resources\save_as_blue.png" />
+    <Content Include="resources\save_blue.png" />
+    <Content Include="resources\tools.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="help\images\buttons\" />
+    <Folder Include="help\images\elements\" />
+    <Folder Include="help\images\var-dom\" />
+    <Folder Include="resources\import-icons\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\common\configuration\Configuration.csproj">
+      <Project>{9578c093-a455-4761-b5f7-e43a9ab878b7}</Project>
+      <Name>Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\common\gui-components\GUI-Components.csproj">
+      <Project>{bb1c281c-ead1-4e05-8123-0ff05c26d7f5}</Project>
+      <Name>GUI-Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\common\key-management\Kms.csproj">
+      <Project>{8913ffe2-4010-4000-8eb9-cb4ac2bedba3}</Project>
+      <Name>Kms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\common\pgDatabase\pgDatabase.csproj">
+      <Project>{c9172fa8-e636-44bf-a1b5-8d1db28ff202}</Project>
+      <Name>pgDatabase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\sakwa-core\Sakwa-core.csproj">
+      <Project>{e21bd5dd-e4a2-4b4c-a153-7bd9a0e8ace7}</Project>
+      <Name>Sakwa-core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

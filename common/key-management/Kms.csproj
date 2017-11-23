@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8913FFE2-4010-4000-8EB9-CB4AC2BEDBA3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>kms</RootNamespace>
+    <AssemblyName>IKms</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="crypto">
+      <HintPath>..\third-party\crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\third-party\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Utils\CRC16.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utils\CRC16b.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utils\CRC32b.cs" />
+    <Compile Include="domain\IKey.cs" />
+    <Compile Include="Implementation\IKeyImpl.cs" />
+    <Compile Include="domain\IKeyring.cs" />
+    <Compile Include="Implementation\IKeyringImpl.cs" />
+    <Compile Include="Utils\KeyUtils.cs" />
+    <Compile Include="domain\IKms.cs" />
+    <Compile Include="Implementation\IKmsImpl.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <!--   <PostBuildEvent>if "$(ConfigurationName)"=="Release" (
+echo Copy $(TargetFileName) to ID and EMV Release 
+copy /Y "$(TargetFileName)" "$(SolutionDir)\run-time\$(ConfigurationName).ID"
+copy /Y "$(TargetFileName)" "$(SolutionDir)\run-time\$(ConfigurationName).EMV"
+) else (
+echo Copy $(TargetFileName) to Debug 
+copy /Y "$(TargetFileName)" "$(SolutionDir)\run-time\$(ConfigurationName)"
+)
+</PostBuildEvent> -->
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

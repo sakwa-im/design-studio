@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2FE776E9-45AB-47EB-8DDA-861F1A9C8F5C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>pgDataSource</RootNamespace>
+    <AssemblyName>pgDataSource</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Configuration, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\common\configuration\bin\Debug\Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\common\third-party\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql, Version=2.2.3.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="controls\ucPostgreslEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controls\ucPostgreslEditor.Designer.cs">
+      <DependentUpon>ucPostgreslEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="controls\ucQueryComposer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controls\ucQueryComposer.Designer.cs">
+      <DependentUpon>ucQueryComposer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSource.cs" />
+    <Compile Include="domain\IDbTreeNode.cs" />
+    <Compile Include="implementation\DbTreeNode.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\common\gui-components\GUI-Components.csproj">
+      <Project>{BB1C281C-EAD1-4E05-8123-0FF05C26D7F5}</Project>
+      <Name>GUI-Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\common\pgDatabase\pgDatabase.csproj">
+      <Project>{C9172FA8-E636-44BF-A1B5-8D1DB28FF202}</Project>
+      <Name>pgDatabase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DatabaseMetadata\DatabaseMetadata.csproj">
+      <Project>{36a7873f-a49f-477e-84c7-d721546cb4fe}</Project>
+      <Name>DatabaseMetadata</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataSourceMetadata\DataSourceMetadata.csproj">
+      <Project>{5f425b48-1db6-46b9-a7a3-b275c13b5935}</Project>
+      <Name>DataSourceMetadata</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\sakwa-core\Sakwa-core.csproj">
+      <Project>{e21bd5dd-e4a2-4b4c-a153-7bd9a0e8ace7}</Project>
+      <Name>Sakwa-core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="controls\ucPostgreslEditor.resx">
+      <DependentUpon>ucPostgreslEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="controls\ucQueryComposer.resx">
+      <DependentUpon>ucQueryComposer.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>  -->
+  <Target Name="AfterBuild">
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(SolutionDir)sakwa-studio\$(OutputPath)\data-sources" OverwriteReadOnlyFiles="true" SkipUnchangedFiles="false" />
+  </Target>
+</Project>

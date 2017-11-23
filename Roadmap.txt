@@ -1,0 +1,10 @@
+Feature request V1:
+22-06-2017	Richard Roos: New Model always selects latest generated model
+
+Feature request V2:
+V2: 
+
+
+
+FixMe List:
+22-06-2017	Richard Roos: Domaintemplate BULKImport dialog window (mine / theirs selection is not working)

@@ -1,0 +1,17 @@
+.vs/
+common/configuration/bin/
+common/key-management/obj/
+common/key-management/bin/
+common/gui-components/obj/
+common/configuration/obj/
+common/gui-components/bin/
+inference-module/bin/
+inference-module/obj/
+pdDataSource/bin/
+pdDataSource/obj/
+XmlDataSource/obj/
+XmlDataSource/bin/
+obj
+common/pgDatabase/bin/Debug/
+bin
+.idea
